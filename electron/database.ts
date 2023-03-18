@@ -7,7 +7,7 @@ class Database {
     /**
      * Database collections names
      */
-    private static collectionNames: string[] = [
+    private static readonly collectionNames: string[] = [
         'projects', 'calendar', 'customers', 
         'products', 'tasks',    'settings'
     ];
@@ -33,7 +33,11 @@ class Database {
      * Load database collections
      */
     public loadCollections(): void {
-        if (this.db.getCollection(''))
+        for (const cName of Database.collectionNames) {
+            const collection = this.db.getCollection(cName);
+            if (collection) this.db.loadCollection(collection);
+            else this.db.addCollection(cName);
+        }
     }
 
     /**
