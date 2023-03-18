@@ -14,3 +14,5 @@
 !/tsconfig.json
 !/tsconfig.node.json
 !/vite.config.ts
+!/forge.config.js
+!/build.cjs
