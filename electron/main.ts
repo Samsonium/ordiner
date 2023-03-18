@@ -1,8 +1,8 @@
 import Database from "./database";
 import AppWindow from "./window";
 
-// Get database instance first time to create singleton instance
-Database.instance;
+// Load or initialize collections
+Database.instance.loadCollections();
 
 // Create window
 const win = new AppWindow();
