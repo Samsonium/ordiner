@@ -1,4 +1,7 @@
 import Loki from 'lokijs';
+import DatabaseCollections from './types/database-collections';
+
+type DBCollections = DatabaseCollections<typeof Database.collectionNames>;
 
 /** Loki database wrapper */
 class Database {
@@ -7,7 +10,7 @@ class Database {
     /**
      * Database collections names
      */
-    private static readonly collectionNames: string[] = [
+    public static readonly collectionNames: string[] = [
         'projects', 'calendar', 'customers', 
         'products', 'tasks',    'settings'
     ];
@@ -16,6 +19,8 @@ class Database {
      * Database instance
      */
     private readonly db: Loki;
+
+    private collections: DBCollections;
     
     /**
      * Make db wrapper instance
@@ -33,10 +38,15 @@ class Database {
      * Load database collections
      */
     public loadCollections(): void {
+        this.collections ??= {};
+
+        // Iterate over collection names and load or create it
         for (const cName of Database.collectionNames) {
             const collection = this.db.getCollection(cName);
-            if (collection) this.db.loadCollection(collection);
-            else this.db.addCollection(cName);
+            if (collection) {
+                this.db.loadCollection(collection);
+                this.collections[cName] = collection;
+            } else this.collections[cName] = this.db.addCollection(cName);
         }
     }
 
@@ -45,6 +55,13 @@ class Database {
      */
     public close(): void {
         this.db.close();
+    }
+
+    /**
+     * Getter for collections
+     */
+    public get collection(): DBCollections {
+        return this.collections;
     }
 
     /**
