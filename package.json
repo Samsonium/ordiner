@@ -3,41 +3,26 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "main": "./electron-build/app.js",
+  "main": "./electron/main.cjs",
   "scripts": {
-    "svelte:dev": "vite --port 7910",
-    "svelte:build": "vite build",
-    "svelte:preview": "vite preview --port 7910",
-    "electron:start": "node build.cjs && electron .",
-    "check": "svelte-check --tsconfig ./tsconfig.json",
-    "start": "electron-forge start",
-    "package": "electron-forge package",
-    "make": "electron-forge make"
+    "sv:dev": "vite --port 7910",
+    "sv:build": "vite build",
+    "sv:preview": "vite preview",
+    "sv:check": "svelte-check --tsconfig ./tsconfig.json",
+    "el:dev": "cross-env NODE_ENV=dev run-p sv:dev el:start",
+    "el:build": "run-s sv:build el:start",
+    "el:start": "electron ."
   },
   "devDependencies": {
-    "@electron-forge/cli": "^6.0.5",
-    "@electron-forge/maker-deb": "^6.0.5",
-    "@electron-forge/maker-rpm": "^6.0.5",
-    "@electron-forge/maker-squirrel": "^6.0.5",
-    "@electron-forge/maker-zip": "^6.0.5",
     "@sveltejs/vite-plugin-svelte": "^2.0.3",
     "@tsconfig/svelte": "^3.0.0",
-    "@types/lokijs": "^1.5.7",
-    "@types/node": "^18.15.3",
     "cross-env": "^7.0.3",
     "electron": "^23.1.4",
-    "nodemon": "^2.0.21",
-    "sass": "^1.59.3",
+    "npm-run-all": "^4.1.5",
     "svelte": "^3.55.1",
     "svelte-check": "^2.10.3",
-    "ts-node": "^10.9.1",
     "tslib": "^2.5.0",
-    "typescript": "^5.0.2",
+    "typescript": "^4.9.3",
     "vite": "^4.2.0"
-  },
-  "dependencies": {
-    "dotenv": "^16.0.3",
-    "electron-squirrel-startup": "^1.0.0",
-    "lokijs": "^1.5.12"
   }
 }
