@@ -1,18 +1,17 @@
 /*
 
 # Dirs
-!/electron
-!/public
 !/src
+!/public
+!/electron
 
 # Files
+!/yarn.lock
+!/README.md
 !/.gitignore
 !/index.html
 !/package.json
-!/README.md
-!/svelte.config.js
 !/tsconfig.json
-!/tsconfig.node.json
 !/vite.config.ts
-!/forge.config.js
-!/build.cjs
+!/svelte.config.js
+!/tsconfig.node.json
