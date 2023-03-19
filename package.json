@@ -11,18 +11,22 @@
     "sv:check": "svelte-check --tsconfig ./tsconfig.json",
     "el:dev": "cross-env NODE_ENV=dev run-p sv:dev el:start",
     "el:build": "run-s sv:build el:start",
-    "el:start": "electron ."
+    "el:start": "nodemon --watch electron --exec electron ."
   },
   "devDependencies": {
     "@sveltejs/vite-plugin-svelte": "^2.0.3",
     "@tsconfig/svelte": "^3.0.0",
     "cross-env": "^7.0.3",
     "electron": "^23.1.4",
+    "nodemon": "^2.0.21",
     "npm-run-all": "^4.1.5",
     "svelte": "^3.55.1",
     "svelte-check": "^2.10.3",
     "tslib": "^2.5.0",
     "typescript": "^4.9.3",
     "vite": "^4.2.0"
+  },
+  "dependencies": {
+    "lokijs": "^1.5.12"
   }
 }
