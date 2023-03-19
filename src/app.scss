@@ -1,0 +1,28 @@
+@font-face {
+    font-family: IBM;
+    font-weight: 400;
+    src: url('/fonts/IBM-Reg.ttf');
+}
+
+@font-face {
+    font-family: IBM;
+    font-weight: 500;
+    src: url('/fonts/IBM-Med.ttf');
+}
+
+@font-face {
+    font-family: IBM;
+    font-weight: 700;
+    src: url('/fonts/IBM-Bold.ttf');
+}
+
+// Configure all elements
+* {
+    box-sizing: border-box;
+    user-select: none;
+}
+
+// Setup font
+:root {
+    font: 400 1rem IBM, Inter, sans-serif;
+}
