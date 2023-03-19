@@ -1,16 +1,28 @@
 const { app, BrowserWindow } = require('electron');
 const { join } = require('path');
+const DB = require('./database.cjs');
 
 /** @type {BrowserWindow} */
 let mainWindow;
+
+/** @type {DB} */
+let db = DB.instance;
 
 /**
  * Create window and load page
  */
 function createWindow() {
+    db.loadCollections();
     mainWindow = new BrowserWindow({
-        width: 900,
-        height: 680,
+        minWidth: 1000,
+        minHeight: 700,
+        autoHideMenuBar: true,
+        center: true,
+        roundedCorners: true,
+        webPreferences: {
+            nodeIntegration: true,
+            preload: join(__dirname, 'preload.cjs')
+        }
     });
 
     const mode = process.env.NODE_ENV;
