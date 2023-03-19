@@ -1,0 +1,17 @@
+div.loader {
+    position: fixed;
+    z-index: 100;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #EFEFEF;
+
+    & > div.ascii-box {
+        width: 120px;
+        font-weight: bold;
+    }
+}
